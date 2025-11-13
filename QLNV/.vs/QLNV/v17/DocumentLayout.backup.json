@@ -1,0 +1,100 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|d:\\lethanhphuoc_64131856\\mvc\\qlnv\\qlnv\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\views\\shared\\_layoutadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\qlnv\\views\\nhanviens\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\views\\nhanviens\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\qlnv\\views\\nhanviens\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\views\\nhanviens\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\qlnv\\views\\nhanviens\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\views\\nhanviens\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\qlnv\\models\\modelqlnv.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{7E197669-C62A-482D-BF67-95658BFB92E4}|QLNV\\QLNV.csproj|solutionrelative:qlnv\\models\\modelqlnv.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_LayoutAdmin.cshtml",
+              "DocumentMoniker": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeDocumentMoniker": "QLNV\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ToolTip": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "RelativeToolTip": "QLNV\\Views\\Shared\\_LayoutAdmin.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:25:58.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Views\\NhanViens\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QLNV\\Views\\NhanViens\\Edit.cshtml",
+              "ToolTip": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Views\\NhanViens\\Edit.cshtml",
+              "RelativeToolTip": "QLNV\\Views\\NhanViens\\Edit.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACoAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-15T02:55:25.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Views\\NhanViens\\Details.cshtml",
+              "RelativeDocumentMoniker": "QLNV\\Views\\NhanViens\\Details.cshtml",
+              "ToolTip": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Views\\NhanViens\\Details.cshtml",
+              "RelativeToolTip": "QLNV\\Views\\NhanViens\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-14T15:02:47.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Views\\NhanViens\\Index.cshtml",
+              "RelativeDocumentMoniker": "QLNV\\Views\\NhanViens\\Index.cshtml",
+              "ToolTip": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Views\\NhanViens\\Index.cshtml",
+              "RelativeToolTip": "QLNV\\Views\\NhanViens\\Index.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T05:45:31.627Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ModelQLNV.edmx [Diagram1]",
+              "DocumentMoniker": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Models\\ModelQLNV.edmx",
+              "RelativeDocumentMoniker": "QLNV\\Models\\ModelQLNV.edmx",
+              "ToolTip": "D:\\LeThanhPhuoc_64131856\\MVC\\QLNV\\QLNV\\Models\\ModelQLNV.edmx [Diagram1]",
+              "RelativeToolTip": "QLNV\\Models\\ModelQLNV.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2024-11-01T05:43:59.592Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

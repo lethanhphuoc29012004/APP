@@ -1,0 +1,144 @@
+﻿@model MILANO_64131856.Models.ChiTietPhieuNhap
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Xóa</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .dl-horizontal {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 15px 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .dl-horizontal dt {
+                font-weight: bold;
+                color: #2c3e50;
+                text-transform: uppercase;
+            }
+
+            .dl-horizontal dd {
+                padding: 10px 15px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background-color: #f9f9f9;
+                font-size: 16px;
+            }
+
+            .dl-horizontal dt::after {
+                content: ':';
+                color: #2c3e50;
+            }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .form-actions input[type="submit"] {
+                background-color: #e74c3c;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+                .form-actions input[type="submit"]:hover {
+                    background-color: #c0392b;
+                }
+
+            .form-actions a {
+                color: #3498db;
+                text-decoration: none;
+                font-weight: bold;
+                margin-left: 15px;
+                display: inline-block;
+                transition: color 0.3s ease;
+            }
+
+                .form-actions a:hover {
+                    color: #2980b9;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Bạn có chắc chắn muốn xóa không?</h3>
+        <h4>Chi tiết phiếu nhập</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Mã chi tiết phiếu nhập</dt>
+            <dd>@Html.DisplayFor(model => model.MaChiTietNhap)</dd>
+
+            <dt>Mã phiếu nhập</dt>
+            <dd>@Html.DisplayFor(model => model.PhieuNhap.MaPhieuNhap)</dd>
+
+            <dt>Tên sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.SanPham.TenSanPham)</dd>
+
+            <dt>Số lượng</dt>
+            <dd>@Html.DisplayFor(model => model.SoLuong)</dd>
+
+            <dt>Đơn giá</dt>
+            <dd>@Html.DisplayFor(model => model.DonGia)</dd>
+
+            <dt>Thành tiền</dt>
+            <dd>@Html.DisplayFor(model => model.ThanhTien)</dd>
+
+            <dt>Mã nhà cung cấp</dt>
+            <dd>@Html.DisplayFor(model => model.PhieuNhap.MaNCC)</dd>
+
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Quay lại danh sách", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

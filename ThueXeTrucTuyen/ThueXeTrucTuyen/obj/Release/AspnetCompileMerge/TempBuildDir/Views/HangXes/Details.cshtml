@@ -1,0 +1,41 @@
+﻿@model ThueXeTrucTuyen.Models.HangXe
+
+@{
+    ViewBag.Title = "Chi tiết hãng xe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-primary">📄 Chi tiết hãng xe</h2>
+
+<div class="card shadow-sm border rounded p-3 bg-light">
+    <h4 class="text-info">🔍 Thông tin hãng xe</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3 font-weight-bold text-secondary">Tên hãng:</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.ten_hang)</dd>
+
+        <dt class="col-sm-3 font-weight-bold text-secondary">Quốc gia:</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.quoc_gia)</dd>
+    </dl>
+</div>
+
+<div class="mt-3 text-center">
+    @Html.ActionLink("✏️ Chỉnh sửa", "Edit", new { id = Model.id }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("📋 Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+
+<style>
+    .card {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+    }
+
+    .row dt {
+        text-align: right;
+    }
+
+    .text-secondary {
+        font-size: 1.1em;
+    }
+</style>

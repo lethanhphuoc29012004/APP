@@ -1,0 +1,148 @@
+﻿@model MILANO_64131856.Models.NhaCungCap
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chỉnh Sửa Nhà Cung Cấp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h3 {
+            color: #5bc0de;
+        }
+
+        h4 {
+            color: #5bc0de;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-group dt {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .form-group dd {
+                margin-left: 0;
+                margin-bottom: 15px;
+                font-size: 16px;
+                color: #555;
+            }
+
+        .form-actions {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #d9534f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+            .btn:hover {
+                background-color: #c9302c;
+            }
+
+        .btn-default {
+            background-color: #f8f8f8;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+
+            .btn-default:hover {
+                background-color: #e7e7e7;
+            }
+
+        .form-actions a {
+            padding: 10px 20px;
+            background-color: #5bc0de;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+            .form-actions a:hover {
+                background-color: #31b0d5;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Chỉnh Sửa Nhà Cung Cấp</h3>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaNCC)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TenNCC,"Tên Nhà Cung Cấp", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenNCC, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenNCC, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiaChi,"Địa Chỉ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SoDienThoai,"Số Điện Thoại", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Lưu Thay Đổi" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="form-actions">
+            @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    </div>
+</body>
+</html>

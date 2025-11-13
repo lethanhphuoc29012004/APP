@@ -1,0 +1,90 @@
+﻿@model ThueXeTrucTuyen.Models.KhachHang
+
+@{
+    ViewBag.Title = "Chỉnh sửa khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa khách hàng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thông tin khách hàng</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ho_ten, "Họ và Tên", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ho_ten, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ho_ten, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.so_dien_thoai, "Số điện thoại", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.so_dien_thoai, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.so_dien_thoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dia_chi, "Địa chỉ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.dia_chi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.dia_chi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.muon_thue, "Xe muốn thuê", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("muon_thue", null, "Chọn xe...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.muon_thue, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Dropdown chỉnh trạng thái -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.trang_thai, "Trạng thái", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.trang_thai,
+                    new SelectList(new[] { "Da Duyet", "Chua Duyet" }, Model.trang_thai),
+                    new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.trang_thai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-success" />
+                @Html.ActionLink("Hủy", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .form-horizontal {
+        max-width: 600px;
+        margin: auto;
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        margin-right: 5px;
+    }
+</style>

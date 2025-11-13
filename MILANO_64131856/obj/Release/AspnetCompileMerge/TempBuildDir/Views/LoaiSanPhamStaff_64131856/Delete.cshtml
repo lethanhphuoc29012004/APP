@@ -1,0 +1,121 @@
+﻿@model MILANO_64131856.Models.LoaiSanPham
+
+@{
+    ViewBag.Title = "Xóa loại sản phẩm";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+}
+<style>
+    /* Tổng thể */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2, h3 {
+        text-align: center;
+        color: #dc3545;
+    }
+
+    h4 {
+        color: #555;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .delete-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Thông tin hiển thị */
+    .dl-horizontal dt {
+        font-weight: bold;
+        width: 40%;
+        text-align: right;
+        float: left;
+        margin-right: 10px;
+    }
+
+    .dl-horizontal dd {
+        width: 55%;
+        float: left;
+    }
+
+    dl::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Nút hành động */
+    .form-actions {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #ffffff;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: #ffffff;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: scale(1.05);
+        }
+</style>
+
+<h2>Xóa loại sản phẩm</h2>
+
+<h3>Bạn có chắc chắn muốn xóa mục này không?</h3>
+<div class="delete-container">
+    <h4>Thông tin loại sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại sản phẩm:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+            @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

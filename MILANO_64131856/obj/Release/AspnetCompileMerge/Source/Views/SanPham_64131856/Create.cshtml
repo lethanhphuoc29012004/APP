@@ -1,0 +1,180 @@
+﻿@model MILANO_64131856.Models.SanPham
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<style>
+    body {
+        background-color: #f3e5d5;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Tiêu đề */
+    h2 {
+        color: #5d4037;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Form */
+    .form-horizontal {
+        background-color: #ffffff;
+        border: 1px solid #d7ccc8;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 20px auto;
+    }
+
+        .form-horizontal h4 {
+            color: #795548;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+    /* Nhãn */
+    .control-label {
+        color: #5d4037;
+        font-weight: bold;
+    }
+
+    /* Inputs */
+    .form-control {
+        border: 1px solid #d7ccc8;
+        border-radius: 4px;
+        padding: 10px;
+        background-color: #fbf5f2;
+    }
+
+        .form-control:focus {
+            border-color: #a1887f;
+            box-shadow: 0px 0px 5px #d7ccc8;
+        }
+
+    /* Nút submit */
+    input[type="submit"] {
+        background-color: #795548;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        margin-top:5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #5d4037;
+            color:white;
+        }
+
+    
+    /* File input */
+    input[type="file"] {
+        display: block;
+        padding: 10px;
+        background-color: #fbf5f2;
+        border: 1px solid #d7ccc8;
+        border-radius: 4px;
+    }
+
+    /* Thông báo lỗi */
+    .text-danger {
+        color: #d32f2f;
+        font-size: 14px;
+    }
+
+    /* nút back */
+    .back-link {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #28a745; /* Màu xanh lá */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .back-link:hover {
+            background-color: #218838; /* Xanh lá đậm */
+            color: white;
+            transform: translateY(-3px);
+        }
+</style>
+@using (Html.BeginForm("Create", "SanPham_64131856", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>THÊM THÔNG TIN SẢN PHẨM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaSanPham, "Mã Sản Phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaSanPham, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenSanPham, "Tên Sản Phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenSanPham, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaLoai, "Loại Sản Phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaLoai", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaLoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GiaBan, "Giá Bán", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoLuongTon, "Số Lượng Tồn", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AnhSanPham, "Ảnh Sản Phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="Avatar" />
+                @Html.ValidationMessageFor(model => model.AnhSanPham, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm Mới" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index", new { }, new { @class = "back-link" })
+</div>

@@ -1,0 +1,157 @@
+﻿/*css cho header*/
+/* Tổng thể header */
+.header-container {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: black;
+    height: 60px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px; /* Khoảng cách bên trong */
+    font-family: Arial, sans-serif;
+}
+
+/* Logo MILANO */
+#header img {
+    width: 190px;
+}
+
+.user {
+    font-size: 16px; /* Kích thước chữ */
+    color: azure;
+    padding-left: 10px;
+}
+/* CSS cho trang */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f4f1; /* Màu nền tone trắng nhẹ */
+    color: #3e2723; /* Màu chữ nâu đậm */
+}
+
+
+#container {
+    display: flex;
+}
+
+#menu {
+    width: 200px;
+    background-color: orangered;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    #menu a {
+        display: block;
+        color: #ffffff; /* Màu chữ trắng */
+        text-decoration: none;
+        padding: 10px;
+        background-color: #3e2723; /* Màu nâu đậm */
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+        #menu a:hover {
+            background-color: #d7ccc8; /* Màu nâu nhạt */
+            color: #3e2723; /* Màu chữ nâu đậm */
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+#content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff; /* Màu nền trắng */
+    color: #3e2723; /* Màu chữ nâu đậm */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+/*css cho trang chu*/
+/* Layout chung */
+.content {
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Box */
+.box {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Màu sắc */
+    .box.purple {
+        background-color: #6f42c1;
+        color: #fff;
+    }
+
+    .box.olive {
+        background-color: #3d9970;
+        color: #fff;
+    }
+
+    .box.red {
+        background-color: #d9534f;
+        color: #fff;
+    }
+
+    .box.aqua {
+        background-color: #17a2b8;
+        color: #fff;
+    }
+
+/* Inner */
+.inner h3 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.inner p {
+    font-size: 18px;
+    margin: 10px 0 0;
+}
+
+/* Icon */
+.icon img {
+    max-height: 100px;
+    margin-top: 10px;
+}
+
+/* Footer link */
+.box-footer {
+    display: block;
+    margin-top: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+    .box-footer:hover {
+        color: #ddd;
+    }

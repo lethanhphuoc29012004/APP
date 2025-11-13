@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ThueXeTrucTuyen.Models.HangXe>
+
+@{
+    ViewBag.Title = "Danh sách hãng xe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-primary">🚗 Danh sách hãng xe</h2>
+
+<p>
+    @Html.ActionLink("➕ Thêm hãng xe mới", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>🏷️ Tên hãng</th>
+            <th>🌍 Quốc gia</th>
+            <th class="text-center">⚙️ Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ten_hang)</td>
+                <td>@Html.DisplayFor(modelItem => item.quoc_gia)</td>
+                <td class="text-center">
+                    @Html.ActionLink("✏️ Sửa", "Edit", new { id = item.id }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("🔍 Xem", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("🗑️ Xóa", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    /* Tùy chỉnh bảng */
+    .table {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .thead-dark th {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+    }
+
+    .btn-sm {
+        margin: 2px;
+    }
+
+    h2 {
+        font-weight: bold;
+    }
+</style>

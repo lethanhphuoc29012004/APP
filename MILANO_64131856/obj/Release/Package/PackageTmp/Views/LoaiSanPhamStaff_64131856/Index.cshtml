@@ -1,0 +1,139 @@
+﻿@model IEnumerable<MILANO_64131856.Models.LoaiSanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+
+    // Khởi tạo WebGrid
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "TenLoai", rowsPerPage: 5);
+}
+
+<style>
+    .grid-footer {
+        color: #333;
+        font: 16px 'Arial', sans-serif;
+        text-align: center;
+        font-weight: bold;
+        padding: 14px 0;
+        background-color: #e9ecef;
+        border-top: 1px solid #ddd;
+        border-radius: 0 0 12px 12px;
+    }
+
+        .grid-footer a {
+            color: #0056b3;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .grid-footer a:hover {
+                background-color: #0056b3;
+                color: #ffffff;
+            }
+
+    h2 {
+        text-align: center;
+        color: goldenrod;
+    }
+
+    /* CSS cho nút "Tạo mới" */
+    .create-link {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #007bff; /* Màu xanh dương */
+        transition: background-color 0.3s, transform 0.3s;
+        margin-bottom: 20px;
+    }
+
+        .create-link:hover {
+            background-color: #0056b3; /* Xanh dương đậm */
+            transform: translateY(-3px);
+            color: white;
+        }
+
+    .action-column {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px; /* Khoảng cách giữa các nút */
+    }
+
+        .action-column a {
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        /* Màu sắc cho các nút */
+        .action-column .btn-info {
+            background-color: #17a2b8; /* Màu xanh lam */
+        }
+
+        .action-column .btn-warning {
+            background-color: #ffc107; /* Màu vàng */
+        }
+
+        .action-column .btn-danger {
+            background-color: #dc3545; /* Màu đỏ */
+        }
+
+        /* Hiệu ứng hover cho các nút */
+        .action-column a:hover {
+            opacity: 0.8;
+        }
+    /* nút back */
+    .back-link {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #28a745; /* Màu xanh lá */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .back-link:hover {
+            background-color: #218838; /* Xanh lá đậm */
+            color: white;
+            transform: translateY(-3px);
+        }
+</style>
+
+<h2>DANH MỤC LOẠI SẢN PHẨM</h2>
+<p>
+    @Html.ActionLink("Thêm mới", "Create", new { }, new { @class = "create-link" }) &nbsp; &nbsp;
+    @Html.ActionLink("Tìm kiếm ", "TimKiemLoaiSanPhamStaff_64131856", new { }, new { @class = "create-link" })
+</p>
+
+<div class="content-container">
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-hover",
+        footerStyle: "grid-footer",
+        fillEmptyRows: true,
+        mode: WebGridPagerModes.Numeric,
+        alternatingRowStyle: "alternatingRowStyle",
+         columns: new[]
+         {
+            grid.Column("TenLoai", "Tên Loại", format: @<text>@item.TenLoai</text>),
+grid.Column(header: "Hành động", format: @<text>
+                <a href="@Url.Action("Details", new { id = item.MaLoai })" class="btn btn-info">Xem chi tiết</a>
+                <a href="@Url.Action("Edit", new { id = item.MaLoai })" class="btn btn-warning">Sửa</a>
+                <a href="@Url.Action("Delete", new { id = item.MaLoai })" class="btn btn-danger">Xóa</a>
+</text>)
+}
+)
+</div>
+<p>
+    @Html.ActionLink("< Trang Chủ", "IndexStaff", "Home", null, new { @class = "back-link" })
+</p>

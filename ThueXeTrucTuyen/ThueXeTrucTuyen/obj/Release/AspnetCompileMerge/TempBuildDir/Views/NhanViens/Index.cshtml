@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ThueXeTrucTuyen.Models.NhanVien>
+
+@{
+    ViewBag.Title = "Danh sách nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-primary">📋 Danh Sách Nhân Viên</h2>
+
+<p>
+    @Html.ActionLink("➕ Thêm Nhân Viên", "Create", null, new { @class = "btn btn-success mb-3" })
+</p>
+
+<table class="table table-hover table-bordered shadow-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th>Họ và Tên</th>
+            <th>Số Điện Thoại</th>
+            <th>Tài Khoản</th>
+            <th>Mật Khẩu</th>
+            <th>Địa Chỉ</th>
+            <th>Chức Vụ</th>
+            <th class="text-center">Thao Tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ho_ten)</td>
+                <td>@Html.DisplayFor(modelItem => item.so_dien_thoai)</td>
+                <td>@Html.DisplayFor(modelItem => item.tai_khoan)</td>
+                <td>******</td> @* Ẩn mật khẩu *@
+                <td>@Html.DisplayFor(modelItem => item.dia_chi)</td>
+                <td>@Html.DisplayFor(modelItem => item.chuc_vu)</td>
+                <td class="text-center">
+                    @Html.ActionLink("✏️ Sửa", "Edit", new { id = item.id }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("🔍 Xem", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("🗑️ Xóa", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    /* Tùy chỉnh bảng */
+    .table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    }
+    .table th {
+    background: #343a40;
+    color: white;
+    text-align: center;
+    }
+    .table-hover tbody tr:hover {
+    background: #f1f1f1;
+    }
+
+    /* Nút bấm */
+    .btn {
+    font-weight: bold;
+    min-width: 100px;
+    }
+
+</style>

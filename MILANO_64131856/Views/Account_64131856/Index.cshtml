@@ -1,0 +1,114 @@
+﻿@model IEnumerable<MILANO_64131856.Models.Account>
+
+@{
+    ViewBag.Title = "Danh Sách Tài Khoản";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    /* Các nút hành động */
+    .btn-action {
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        margin-right: 10px;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    /* Nút "Chỉnh Sửa" */
+    .btn-edit {
+        background-color: #007bff; /* Màu xanh dương */
+        color: white;
+    }
+
+        .btn-edit:hover {
+            background-color: #0056b3; /* Xanh dương đậm */
+            transform: scale(1.05); /* Hiệu ứng phóng to */
+        }
+
+    /* Nút "Chi Tiết" */
+    .btn-details {
+        background-color: #17a2b8; /* Màu xanh lam */
+        color: white;
+    }
+
+        .btn-details:hover {
+            background-color: #138496; /* Xanh lam đậm */
+            transform: scale(1.05); /* Hiệu ứng phóng to */
+        }
+
+    /* Nút "Xóa" */
+    .btn-delete {
+        background-color: #dc3545; /* Màu đỏ */
+        color: white;
+    }
+
+        .btn-delete:hover {
+            background-color: #c82333; /* Đỏ đậm */
+            transform: scale(1.05); /* Hiệu ứng phóng to */
+        }
+
+    /* Nút "Quay lại" */
+    .back-link {
+        background-color: #6c757d; /* Màu xám */
+        color: white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        .back-link:hover {
+            background-color: #5a6268; /* Màu xám đậm */
+            color:white;
+        }
+
+    h2 {
+        text-align: center;
+        color: goldenrod;
+    }
+</style>
+
+<h2>Danh Sách Tài Khoản</h2>
+
+<p>
+    @Html.ActionLink("Tạo Mới", "Create", new { @class = " back-link" })
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pass)
+            </th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pass)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.AccountID, @class = "btn-action btn-edit" }) |
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.AccountID, @class = "btn-action btn-details" }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.AccountID, @class = "btn-action btn-delete" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.ActionLink("Quay lại", "Index", "Home", null, new { @class = "back-link" })

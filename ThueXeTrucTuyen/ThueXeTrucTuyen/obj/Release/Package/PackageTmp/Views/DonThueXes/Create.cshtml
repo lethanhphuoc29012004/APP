@@ -1,0 +1,77 @@
+﻿@model ThueXeTrucTuyen.Models.DonThueXe
+
+@{
+    ViewBag.Title = "Thêm đơn thuê xe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Style của bạn */
+</style>
+
+<h2>Thêm đơn thuê xe</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.Label("Khách hàng")
+                @Html.DropDownList("id_khach_hang", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_khach_hang, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Xe muốn thuê")
+                @Html.DropDownList("id_xe", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.id_xe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.Label("Ngày bắt đầu")
+                @Html.TextBoxFor(model => model.ngay_bat_dau, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ngay_bat_dau, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Ngày kết thúc")
+                @Html.TextBoxFor(model => model.ngay_ket_thuc, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ngay_ket_thuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.HiddenFor(model => model.tong_tien)
+            </div>
+            
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                @Html.Label("Nhân viên xử lý")
+                @Html.EditorFor(model => model.id_nhan_vien_xu_ly, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.id_nhan_vien_xu_ly, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Trạng thái(Đã thanh toán/Chưa thanh toán)")
+                @Html.EditorFor(model => model.trang_thai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.trang_thai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <input type="submit" value="Lưu đơn thuê" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="text-center">
+    @Html.ActionLink("← Quay lại danh sách", "Index", null, new { @class = "btn btn-back" })
+</div>

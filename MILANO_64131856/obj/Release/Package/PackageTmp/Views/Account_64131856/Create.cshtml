@@ -1,0 +1,126 @@
+﻿@model MILANO_64131856.Models.Account
+
+@{
+    ViewBag.Title = "Tạo tài khoản";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center; color: #0056b3;">TẠO TÀI KHOẢN MỚI</h2>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f3f4f6;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-horizontal {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-horizontal h4 {
+            color: #333;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+    .form-group label {
+        font-weight: bold;
+        color: #0056b3;
+    }
+
+    .form-control {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #0056b3;
+        }
+
+    .btn {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    }
+
+        .btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        transition: color 0.3s;
+    }
+
+        .back-link:hover {
+            color: #003d80;
+        }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thông tin tài khoản</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AccountID, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mã tài khoản" } })
+                @Html.ValidationMessageFor(model => model.AccountID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên tài khoản" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pass, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mật khẩu" } })
+                @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Tạo mới" class="btn" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="text-align: center;">
+    @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "back-link" })
+</div>

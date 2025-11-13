@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ThueXeTrucTuyen.Models.DoanhThuReport>
+
+@{
+    ViewBag.Title = "Báo cáo doanh thu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .search-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+        .search-box label {
+            margin: 0 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .search-box input[type="date"] {
+            width: 200px;
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            margin-left: 20px;
+            padding: 6px 16px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+
+    table th, table td {
+        vertical-align: middle !important;
+    }
+</style>
+
+<h2 class="text-center text-primary" style="margin-bottom: 25px;">BÁO CÁO DOANH THU</h2>
+
+<!-- FORM LỌC DỮ LIỆU THEO NGÀY -->
+<div class="search-box">
+
+    @using (Html.BeginForm("BaoCaoDoanhThu", "DoanhThus", FormMethod.Get))
+    {
+        <div class="search-box">
+            <label>Từ ngày:</label>
+            <input type="date" name="fromDate" value="@Request["fromDate"]" />
+
+            <label>Đến ngày:</label>
+            <input type="date" name="toDate" value="@Request["toDate"]" />
+
+            <button type="submit" class="btn btn-primary">Lọc</button>
+        </div>
+    }
+
+</div>
+
+<!-- BẢNG HIỂN THỊ DỮ LIỆU -->
+<table class="table table-bordered table-hover text-center">
+    <thead>
+        <tr style="background-color: #007bff; color: white;">
+            <th style="width: 150px;">Mã doanh thu</th>
+            <th>Ngày</th>
+            <th>Tổng tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaDoanhThu</td>
+                    <td>@item.Ngay.ToString("dd/MM/yyyy")</td>
+                    <td><b>@item.TongTien.ToString("N0") đ</b></td>
+                </tr>
+            }
+
+            <tr style="background-color: #f8f9fa;">
+                <td colspan="2" class="text-right font-weight-bold">Tổng doanh thu:</td>
+                <td><b>@Model.Sum(x => x.TongTien).ToString("N0") đ</b></td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">Không có dữ liệu cho khoảng ngày được chọn.</td>
+            </tr>
+        }
+    </tbody>
+</table>

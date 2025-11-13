@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ThueXeTrucTuyen.Models.DonThueXe>
+
+@{
+    ViewBag.Title = "Danh sách đơn thuê xe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: #2c3e50;
+    }
+
+    .btn-them {
+        display: inline-block;
+        margin-bottom: 20px;
+        background-color: #28a745;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+        .btn-them:hover {
+            background-color: #218838;
+            color: white;
+        }
+
+    table.table {
+        font-size: 14px;
+    }
+
+        table.table th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+        }
+
+        table.table td {
+            vertical-align: middle;
+        }
+
+    td b {
+        color: #e74c3c;
+    }
+</style>
+
+<h2>ĐƠN THUÊ XE</h2>
+
+<!-- Nút thêm đơn thuê xe -->
+<p>
+    <a href="@Url.Action("Create", "DonThueXes")" class="btn-them">+ Thêm đơn thuê xe</a>
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Mã đơn thuê xe</th>
+            <th>Tên xe</th>
+  
+            <th>Tên khách hàng</th>
+            <th>Nhân viên xử lý</th>
+            <th>Ngày bắt đầu thuê</th>
+            <th>Ngày kết thúc thuê</th>
+            <th>Đơn giá thuê/ngày</th>
+            <th>Trạng thái</th>
+            <th>Tổng tiền</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var soNgayThue = (item.ngay_ket_thuc - item.ngay_bat_dau).Days;
+            var tongTien = item.Xe.gia_thue_ngay * soNgayThue;
+
+            <tr>
+                <td>@item.id</td>
+                <td>@item.Xe.ten_xe</td>
+                <td>@item.KhachHang.ho_ten</td>
+                <td>@item.id_nhan_vien_xu_ly</td>
+                <td>@item.ngay_bat_dau.ToString("dd/MM/yyyy")</td>
+                <td>@item.ngay_ket_thuc.ToString("dd/MM/yyyy")</td>
+                <td>@item.Xe.gia_thue_ngay.ToString("N0") đ</td>
+                <td>@item.trang_thai</td>
+                <td><b>@tongTien.ToString("N0") đ</b></td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,196 @@
+﻿@model IEnumerable<MILANO_64131856.Models.ChiTietPhieuNhap>
+
+@{
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "TieuDe", rowsPerPage: 3);
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Danh sách chi tiết phiếu nhập</title>
+    <style>
+        h2 {
+            text-align: center;
+            color: goldenrod;
+        }
+
+        .grid-footer {
+            color: #333;
+            font: 16px 'Arial', sans-serif;
+            text-align: center;
+            font-weight: bold;
+            padding: 14px 0;
+            background-color: #e9ecef;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 12px 12px;
+        }
+
+            .grid-footer a {
+                color: #0056b3;
+                text-decoration: none;
+                padding: 8px 18px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+                .grid-footer a:hover {
+                    background-color: #0056b3;
+                    color: #ffffff;
+                }
+
+        .webgrid-row {
+            background-color: #f9f9f9;
+        }
+
+            .webgrid-row:nth-child(even) {
+                background-color: #ffffff;
+            }
+
+        .webgrid-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+            .webgrid-table th, .webgrid-table td {
+                border: 1px solid #ddd;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .webgrid-table th {
+                background-color: #ffc107;
+                color: white; /* Màu chữ tiêu đề là trắng */
+                text-decoration: none;
+            }
+
+            .webgrid-table td {
+                color: #333;
+            }
+
+        .webgrid-pager {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .webgrid-pager a {
+                text-decoration: none;
+                padding: 5px 10px;
+                border: 1px solid #007bff;
+                border-radius: 5px;
+                color: #007bff;
+                margin: 0 5px;
+            }
+
+                .webgrid-pager a:hover {
+                    background-color: #007bff;
+                    color: #ffffff;
+                }
+
+        .btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 3px;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        .btn-success {
+            background-color: #28a745;
+            border: 1px solid #28a745;
+        }
+
+            .btn-success:hover {
+                background-color: #218838;
+                border-color: #218838;
+            }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border: 1px solid #ffc107;
+            color: #212529;
+        }
+
+            .btn-warning:hover {
+                background-color: #e0a800;
+                border-color: #e0a800;
+            }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: 1px solid #dc3545;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+                border-color: #c82333;
+            }
+
+        .back-link {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #28a745; /* Màu xanh lá */
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+            .back-link:hover {
+                background-color: #218838; /* Xanh lá đậm */
+                color: white;
+                transform: translateY(-3px);
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Danh sách chi tiết phiếu nhập</h2>
+        <p>
+            @Html.ActionLink("Tạo mới", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        @grid.GetHtml(
+           tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "webgrid-alternating-row",
+            columns: new[] {
+                grid.Column("MaChiTietNhap", "Mã chi tiết nhập"),
+                grid.Column("PhieuNhap.MaPhieuNhap", "Mã phiếu nhập"),
+                grid.Column("SoLuong", "Số lượng"),
+                grid.Column("DonGia", "Đơn giá"),
+                grid.Column("ThanhTien", "Thành tiền"),
+                grid.Column("SanPham.TenSanPham", "Tên sản phẩm"),
+                grid.Column("", "Thao tác", format: @<text>
+    <a href="@Url.Action("Edit", new { id = item.MaChiTietNhap })" class="btn btn-warning">Chỉnh sửa</a> |
+    <a href="@Url.Action("Details", new { id = item.MaChiTietNhap })" class="btn btn-success">Chi tiết</a> |
+    <a href="@Url.Action("Delete", new { id = item.MaChiTietNhap })" class="btn btn-danger">Xóa</a>
+                </text>)
+}
+)
+
+    </div>
+    <div>
+        @Html.ActionLink("Trở về", "Index", "PhieuNhapStaff_64131856", null, new { @class = "back-link" })
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<MILANO_64131856.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "TieuDe", rowsPerPage: 5);
+}
+
+<style>
+    .grid-footer {
+        color: #333;
+        font: 16px 'Arial', sans-serif;
+        text-align: center;
+        font-weight: bold;
+        padding: 14px 0;
+        background-color: #e9ecef;
+        border-top: 1px solid #ddd;
+        border-radius: 0 0 12px 12px;
+    }
+
+        .grid-footer a {
+            color: #0056b3;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .grid-footer a:hover {
+                background-color: #0056b3;
+                color: #ffffff;
+            }
+
+    h2 {
+        text-align: center;
+        color: goldenrod;
+    }
+    /* css cho nút create Thêm mới */
+    .create-link {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #007bff; /* Màu xanh dương */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .create-link:hover {
+            background-color: #0056b3; /* Xanh dương đậm */
+            transform: translateY(-3px);
+            color: white;
+        }
+
+    .back-link {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #28a745; /* Màu xanh lá */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .back-link:hover {
+            background-color: #218838; /* Xanh lá đậm */
+            color: white;
+            transform: translateY(-3px);
+        }
+</style>
+<h2>DANH SÁCH CÁC SẢN PHẨM</h2>
+<p>
+    @Html.ActionLink("Tạo mới", "Create", new { }, new { @class = "create-link" })
+    @Html.ActionLink("Tìm kiếm sản phẩm", "TimKiemSanPhamStaff_64131856", new { }, new { @class = "create-link" })
+</p>
+
+
+@grid.GetHtml(
+                tableStyle: "table table-bordered table-hover",
+                footerStyle: "grid-footer",
+                fillEmptyRows: true,
+                mode: WebGridPagerModes.Numeric,
+                alternatingRowStyle: "alternatingRowStyle",
+                columns: new[]
+                {
+        grid.Column(header: "STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage)),
+        grid.Column("MaSanPham", "Mã Sản Phẩm", format: item => @item.MaSanPham),
+        grid.Column("TenSanPham", "Tên Sản Phẩm", format: item => @item.TenSanPham),
+        grid.Column("GiaBan", "Giá Bán"),
+        grid.Column("SoLuongTon", "Số Lượng Tồn", format: item => @item.SoLuongTon),
+        grid.Column("AnhSanPham", "Ảnh Sản Phẩm", format: item => @item.AnhSanPham),
+        grid.Column("LoaiSanPham.TenLoai", "Loại Sản Phẩm", format: item => @item.LoaiSanPham.TenLoai),
+        grid.Column(header: "", format: @<text>
+    <a href="@Url.Action("Details", new { id = item.MaSanPham })" class="btn btn-info">Xem chi tiết</a>
+    <a href="@Url.Action("Edit", new { id = item.MaSanPham })" class="btn btn-warning">Sửa</a>
+    <a href="@Url.Action("Delete", new { id = item.MaSanPham })" class="btn btn-danger">Xóa</a>
+        </text>)
+}
+)
+@Html.ActionLink("< Trang Chủ", "IndexStaff", "Home", null, new { @class = "back-link" })

@@ -1,0 +1,209 @@
+﻿@model IEnumerable<MILANO_64131856.Models.LoaiSanPham>
+
+@{
+    ViewBag.Title = "TimKiemLoaiSanPhamStaff_64131856";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "TenLoai", rowsPerPage: 2);
+}
+
+<style type="text/css">
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f3f4f6;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 24px;
+        color: #333;
+        font-size: 26px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .table1 {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .table1 th, .table1 td {
+            padding: 12px;
+            border: none;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .table1 th {
+            background-color: #0056b3;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .table1 tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table1 input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+            .table1 input[type="text"]:focus {
+                border-color: #0056b3;
+            }
+
+        .table1 input[type="submit"], .table1 input[type="button"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+
+            .table1 input[type="submit"]:hover, .table1 input[type="button"]:hover {
+                background-color: #218838;
+                transform: scale(1.05);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+    .grid-footer {
+        color: #333;
+        font: 16px 'Arial', sans-serif;
+        text-align: center;
+        font-weight: bold;
+        padding: 14px 0;
+        background-color: #e9ecef;
+        border-top: 1px solid #ddd;
+        border-radius: 0 0 12px 12px;
+    }
+
+        .grid-footer a {
+            color: #0056b3;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .grid-footer a:hover {
+                background-color: #0056b3;
+                color: #ffffff;
+            }
+
+    .edit-btn {
+        display: inline-block;
+        background-color: #17a2b8;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        margin-right: 4px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .edit-btn:hover {
+            background-color: #138496;
+            transform: translateY(-2px);
+        }
+
+    .delete-btn {
+        display: inline-block;
+        background-color: #dc3545;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+        }
+
+    /* nút back */
+    .back-link {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #28a745; /* Màu xanh lá */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .back-link:hover {
+            background-color: #218838; /* Xanh lá đậm */
+            color: white;
+            transform: translateY(-3px);
+        }
+</style>
+
+<body>
+    <div class="container">
+        @using (Html.BeginForm("TimKiemLoaiSanPhamStaff_64131856", "LoaiSanPhamStaff_64131856", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+            <table class="table1" align="center">
+                <tr>
+                    <td><h3 style="color:green;">Tên loại sản phẩm</h3></td>
+                    <td><input type="text" name="tenLoai" value="@ViewBag.tenLoai" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px; width: 100px;" />
+                        <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px; width: 100px;" onclick="location.href='@Url.Action("TimKiemLoaiSanPhamStaff_64131856", "LoaiSanPhamStaff_64131856")'" />
+                    </td>
+                </tr>
+            </table>
+        }
+        <h2 style="text-align:center;">DANH SÁCH LOẠI SẢN PHẨM</h2>
+
+        @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            columns: new[]
+            {
+                grid.Column(header: "STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage)),
+                grid.Column("MaLoai", "Mã Loại", format: item => @item.MaLoai),
+                grid.Column("TenLoai", "Tên Loại Sản Phẩm", format: item => @item.TenLoai),
+                grid.Column(header: "", format: @<text>
+    <a href="@Url.Action("Edit", new { id = item.MaLoai })" class="edit-btn">Sửa</a> |
+    <a href="@Url.Action("Details", new { id = item.MaLoai })" class="edit-btn">Chi tiết</a> |
+    <a href="@Url.Action("Delete", new { id = item.MaLoai })" class="delete-btn">Xóa</a>
+                </text>)
+}
+)
+    </div>
+</body>
+
+<p>
+    @Html.ActionLink("Trở về", "Index", "LoaiSanPhamStaff_64131856", null, new { @class = "back-link" })
+</p>

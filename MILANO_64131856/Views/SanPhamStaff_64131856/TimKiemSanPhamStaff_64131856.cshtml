@@ -1,0 +1,212 @@
+﻿@model IEnumerable<MILANO_64131856.Models.SanPham>
+
+@{
+    ViewBag.Title = "TimKiemSanPhamStaff_64131856";
+    Layout = "~/Views/Shared/_LayoutStaff.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "TenSanPham", rowsPerPage: 2);
+}
+<style type="text/css">
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .table1 {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+        .table1 td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .table1 input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+            .table1 input[type="text"]:focus {
+                border-color: #007bff;
+            }
+
+        .table1 input[type="submit"], .table1 input[type="button"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+            .table1 input[type="submit"]:hover, .table1 input[type="button"]:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 24px;
+        color: #333;
+        font-size: 26px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .grid-footer {
+        color: #333;
+        font: 16px 'Arial', sans-serif;
+        text-align: center;
+        font-weight: bold;
+        padding: 14px 0;
+        background-color: #f1f1f1;
+        border-top: 1px solid #ddd;
+        border-radius: 0 0 10px 10px;
+    }
+
+        .grid-footer a {
+            color: #007bff;
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 6px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .grid-footer a:hover {
+                background-color: #007bff;
+                color: #ffffff;
+            }
+
+    .alternatingRowStyle {
+        background-color: #f9f9f0;
+    }
+
+    .table-bordered {
+        border: 1px solid #ddd;
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #e9e9e0;
+    }
+
+    .edit-btn {
+        display: inline-block;
+        background-color: #28a745;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+        .edit-btn:hover {
+            background-color: #218838;
+        }
+
+    .product-image {
+        width: 60px;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    /*css nut quy ve*/
+    /* nút back */
+    .back-link {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #28a745; /* Màu xanh lá */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .back-link:hover {
+            background-color: #218838; /* Xanh lá đậm */
+            color: white;
+            transform: translateY(-3px);
+        }
+</style>
+
+
+
+<body>
+    <div>
+        @using (Html.BeginForm("TimKiemSanPhamStaff_64131856", "SanPhamStaff_64131856", FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+
+            <table class="table1" align="center">
+
+                <tr>
+                    <td>
+                        <h3 style="color:green;">Tên sản phẩm</h3>
+                    </td>
+                    <td>
+                        <input type="text" name="tenSanPham" value="@ViewBag.tenSanPham" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:100px; background-color: blue;color:white" />
+                        <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px;width:100px; background-color: blue;color:white" onclick="location.href='@Url.Action("TimKiemSanPhamStaff_64131856", "SanPhamStaff_64131856/TimKiemSanPhamStaff_64131856")'" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <h2 style="text-align:center;">DANH SÁCH SẢN PHẨM</h2>
+
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-hover",
+        footerStyle: "grid-footer",
+        fillEmptyRows: true,
+        mode: WebGridPagerModes.Numeric,
+        alternatingRowStyle: "alternatingRowStyle",
+        columns: new[]
+        {
+             grid.Column(header: "STT", format: item => grid.Rows.IndexOf(item) + 1 + (grid.PageIndex * grid.RowsPerPage)),
+              grid.Column("MaSanPham", "Mã Sản Phẩm", format: item => @item.MaSanPham),
+             grid.Column("TenSanPham", "Tên Sản Phẩm", format: item => @item.TenSanPham),
+             grid.Column("GiaBan", "Giá Bán"),
+             grid.Column("SoLuongTon", "Số Lượng Tồn", format: item => @item.SoLuongTon),
+             grid.Column("AnhSanPham", "Ảnh Sản Phẩm", format: item => @item.AnhSanPham),
+             grid.Column("LoaiSanPham.TenLoai", "Loại Sản Phẩm", format: item => @item.LoaiSanPham.TenLoai),
+             grid.Column(header: "", format: @<text>
+    <a href="@Url.Action("Details", new { id = item.MaSanPham })" class="edit-btn"><abbr title="Xem chi tiết">Xem chi tiết</abbr></a>
+            </text>)
+}
+)
+</body>
+@Html.ActionLink("< Trang Chủ", "IndexStaff", "Home", null, new { @class = "back-link" })

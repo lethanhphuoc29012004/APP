@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Server=LAPTOP-S71JCNB3\SQLEXPRESS;Database=ThueXeTrucTuyen;Integrated Security=True;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\LeThanhPhuoc_64131856\\CNPM\\ThueXeTrucTuyen\\ThueXeTrucTuyen\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="ThueXeTrucTuyenEntities-Web.config Connection String" description="ThueXeTrucTuyenEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=LAPTOP-S71JCNB3\SQLEXPRESS;initial catalog=ThueXeTrucTuyen;integrated security=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\LeThanhPhuoc_64131856\\CNPM\\ThueXeTrucTuyen\\ThueXeTrucTuyen\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ThueXeTrucTuyenEntities']/@connectionString" />
+  </parameter>
+</parameters>

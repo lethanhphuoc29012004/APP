@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="MILANO_64131856Entities-Web.config Connection String" description="MILANO_64131856Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model_64131856.csdl|res://*/Models.Model_64131856.ssdl|res://*/Models.Model_64131856.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=LAPTOP-S71JCNB3\SQLEXPRESS;initial catalog=MILANO_64131856;integrated security=True;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="D:\\LeThanhPhuoc_64131856\\MVC\\MILANO_64131856\\MILANO_64131856\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MILANO_64131856Entities']/@connectionString" />
-  </parameter>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Server=LAPTOP-S71JCNB3\SQLEXPRESS;Database=MILANO_64131856;Integrated Security=True;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="D:\\LeThanhPhuoc_64131856\\MVC\\MILANO_64131856\\MILANO_64131856\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-</parameters>
